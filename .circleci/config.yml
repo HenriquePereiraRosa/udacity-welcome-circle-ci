@@ -15,13 +15,13 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
     requires: one
     docker: # it runs inside a docker image, the same as above.
       - image: circleci/node:13.8.0
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+        # auth:
+        #   username: mydockerhub-user
+        #   password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
-      # - checkout
-      # - run: echo "World" # We run a similar echo command to above.
-      # - run: sleep 15 # and then sleep for 15 seconds.
+      - checkout
+      - run: echo "World" # We run a similar echo command to above.
+      - run: sleep 15 # and then sleep for 15 seconds.
 # Under the workflows: map, we can coordinate our two jobs, defined above.
 workflows:
   version: 2
