@@ -3,16 +3,16 @@ orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 
-defaults: &print_workflow_id
-  commands:
-    sayhello:
-      description: "Print the pipeline workflow ID"
-      parameters:
-        to:
-          type: string
-          default: $CIRCLE_WORKFLOW_ID
-      steps:
-        - run: echo << parameters.to >>
+
+commands:
+  print_workflow_id:
+    description: "Print the pipeline workflow ID"
+    parameters:
+      to:
+        type: string
+        default: $CIRCLE_WORKFLOW_ID
+    steps:
+      - run: echo << parameters.to >>
 
 jobs: # we now have TWO jobs, so that a workflow can coordinate them!
   one: # This is our first job.
